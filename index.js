@@ -1,6 +1,8 @@
 'use strict';
 
-// Arrays
+/**
+ * Arrays
+ */
 // 1. Merge two sorted arrays
 const mergeSortedArray = (arr1, arr2) => {
 	if (!arr1 || !arr1.length) return arr2;
@@ -21,7 +23,9 @@ const mergeSortedArray = (arr1, arr2) => {
 
 // mergeSortedArray([1, 3, 7], [3, 20, 51]);
 
-// Hash Maps
+/**
+ * Hash Maps
+ */
 // 1. Create Hash
 class HashTable {
 	constructor(size) {
@@ -112,5 +116,9 @@ function findFirstRecurringItem(map) {
 	return undefined;
 }
 
-console.log(recurring([2, 5, 1, 2, 3, 5, 1, 2, 4]));
-console.log(recurring([2, 3, 4, 5]));
+// console.log(recurring([2, 5, 1, 2, 3, 5, 1, 2, 4]));
+// console.log(recurring([2, 3, 4, 5]));
+
+/**
+ * Linked Lists
+ */
