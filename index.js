@@ -339,10 +339,182 @@ class DoublyLinkedList {
 	}
 }
 
-const myLinkedList = new LinkedList(10);
-myLinkedList.append(5);
-myLinkedList.append(16);
-myLinkedList.reverse();
+// const myLinkedList = new LinkedList(10);
+// myLinkedList.append(5);
+// myLinkedList.append(16);
+// myLinkedList.reverse();
 
-myLinkedList.printListData();
-console.log(myLinkedList);
+// myLinkedList.printListData();
+// console.log(myLinkedList);
+
+/**
+ * Stacks & Queues
+ */
+class Node {
+	constructor(data, next = null) {
+		this.data = data;
+		this.next = next;
+	}
+}
+
+class Stack {
+	constructor() {
+		this.top = null;
+		this.bottom = null;
+		this.length = 0;
+	}
+
+	peek() {
+		console.log(this.top);
+
+		return this.top;
+	}
+
+	push(data) {
+		if (this.length === 0) {
+			const node = new Node(data);
+			this.top = node;
+			this.bottom = node;
+		} else {
+			this.top = new Node(data, this.top);
+		}
+
+		this.length++;
+
+		return this;
+	}
+
+	pop() {
+		if (!this.top) return null;
+
+		this.top = this.top.next;
+		this.length--;
+
+		return this;
+	}
+}
+
+// const stack = new Stack();
+// stack.push('google');
+// stack.push('discord');
+// stack.push('youtube');
+// stack.pop();
+// stack.peek();
+
+// console.log(stack);
+
+class Queue {
+	constructor() {
+		this.first = null;
+		this.last = null;
+		this.length = 0;
+	}
+
+	peek() {
+		console.log(this.first);
+
+		return this.first;
+	}
+
+	enqueue(data) {
+		const node = new Node(data);
+
+		if (this.length === 0) {
+			this.first = node;
+			this.last = node;
+		} else {
+			this.last.next = node;
+			this.last = node;
+		}
+
+		this.length++;
+
+		return this;
+	}
+
+	dequeue() {
+		if (!this.first) return null;
+
+		this.first = this.first.next;
+		this.length--;
+
+		return this;
+	}
+}
+
+// const queue = new Queue();
+// queue.enqueue('Ioana');
+// queue.enqueue('Serban');
+// queue.enqueue('Calin');
+// queue.dequeue();
+
+// console.log(queue);
+
+/**
+ * Trees
+ */
+class BSTNode {
+	constructor(data, left = null, right = null) {
+		this.data = data;
+		this.left = left;
+		this.right = right;
+	}
+
+	insert(data) {
+		const node = new BSTNode(data);
+
+		if (data < this.data && this.left) {
+			this.left.insert(data);
+		} else if (data < this.data) {
+			this.left = node;
+		} else if (data > this.data && this.right) {
+			this.right.insert(data);
+		} else {
+			this.right = node;
+		}
+	}
+
+	lookup(data) {
+		if (data < this.data && this.left) {
+			this.left.lookup(data);
+		} else if (data < this.data) {
+			console.log(this);
+		} else if (data > this.data && this.right) {
+			this.right.lookup(data);
+		} else {
+			console.log(this);
+		}
+	}
+}
+
+// class BinarySearchTree {
+// 	constructor() {
+// 		this.root = null;
+// 	}
+
+// 	insert(data) {
+// 		if (!this.root) {
+// 			this.root = new BSTNode(data);
+// 			return;
+// 		}
+
+// 		if (data < this.root) {
+// 			this.root.left.insert();
+// 		}
+
+// 		return this;
+// 	}
+
+// 	lookup(data) {}
+// }
+
+const bst = new BSTNode(10);
+bst.insert(20);
+bst.insert(2);
+bst.insert(5);
+bst.insert(1);
+bst.insert(24);
+bst.insert(17);
+bst.lookup(20);
+
+console.log(bst);
