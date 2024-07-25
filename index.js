@@ -487,34 +487,84 @@ class BSTNode {
 	}
 }
 
-// class BinarySearchTree {
-// 	constructor() {
-// 		this.root = null;
-// 	}
+// const bst = new BSTNode(10);
+// bst.insert(20);
+// bst.insert(2);
+// bst.insert(5);
+// bst.insert(1);
+// bst.insert(24);
+// bst.insert(17);
+// bst.lookup(20);
 
-// 	insert(data) {
-// 		if (!this.root) {
-// 			this.root = new BSTNode(data);
-// 			return;
-// 		}
+// console.log(bst);
 
-// 		if (data < this.root) {
-// 			this.root.left.insert();
-// 		}
+/**
+ * Graphs
+ */
+// Edge List
+const graphEdgeList = [
+	[0, 2],
+	[2, 3],
+	[2, 1],
+	[3, 1],
+];
 
-// 		return this;
-// 	}
+// Adjacent List
+const graphAdjacentList = [[2], [2, 3], [0, 1, 3], [1, 2]];
+const graphAdjacentListObj = {
+	0: [2],
+	1: [2, 3],
+	2: [0, 1, 3],
+	3: [1, 2],
+};
 
-// 	lookup(data) {}
-// }
+// Adjacent Matrix
+const graphAdjacentMatrix = [
+	[0, 0, 1, 0],
+	[0, 0, 1, 1],
+	[1, 1, 0, 1],
+	[0, 1, 1, 0],
+];
+const graphAdjacentMatrixObj = {
+	0: [0, 0, 1, 0],
+	1: [0, 0, 1, 1],
+	2: [1, 1, 0, 1],
+	3: [0, 1, 1, 0],
+};
 
-const bst = new BSTNode(10);
-bst.insert(20);
-bst.insert(2);
-bst.insert(5);
-bst.insert(1);
-bst.insert(24);
-bst.insert(17);
-bst.lookup(20);
+class Graph {
+	constructor() {
+		this.numberOfNodes = 0;
+		this.adjacentList = {};
+	}
 
-console.log(bst);
+	addVertex(node) {
+		this.adjacentList[node] = [];
+		this.numberOfNodes++;
+	}
+
+	addEdge(node1, node2) {
+		this.adjacentList[node1].push(node2);
+		this.adjacentList[node2].push(node1);
+	}
+}
+
+const graph = new Graph();
+
+graph.addVertex(0);
+graph.addVertex(1);
+graph.addVertex(2);
+graph.addVertex(3);
+graph.addVertex(4);
+graph.addVertex(5);
+graph.addVertex(6);
+graph.addEdge(0, 1);
+graph.addEdge(0, 2);
+graph.addEdge(1, 2);
+graph.addEdge(1, 3);
+graph.addEdge(2, 4);
+graph.addEdge(3, 4);
+graph.addEdge(4, 5);
+graph.addEdge(5, 6);
+
+console.log(graph);
