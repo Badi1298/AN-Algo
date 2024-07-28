@@ -551,20 +551,58 @@ class Graph {
 
 const graph = new Graph();
 
-graph.addVertex(0);
-graph.addVertex(1);
-graph.addVertex(2);
-graph.addVertex(3);
-graph.addVertex(4);
-graph.addVertex(5);
-graph.addVertex(6);
-graph.addEdge(0, 1);
-graph.addEdge(0, 2);
-graph.addEdge(1, 2);
-graph.addEdge(1, 3);
-graph.addEdge(2, 4);
-graph.addEdge(3, 4);
-graph.addEdge(4, 5);
-graph.addEdge(5, 6);
+// graph.addVertex(0);
+// graph.addVertex(1);
+// graph.addVertex(2);
+// graph.addVertex(3);
+// graph.addVertex(4);
+// graph.addVertex(5);
+// graph.addVertex(6);
+// graph.addEdge(0, 1);
+// graph.addEdge(0, 2);
+// graph.addEdge(1, 2);
+// graph.addEdge(1, 3);
+// graph.addEdge(2, 4);
+// graph.addEdge(3, 4);
+// graph.addEdge(4, 5);
+// graph.addEdge(5, 6);
 
-console.log(graph);
+// console.log(graph);
+
+/**
+ * Recursion
+ */
+
+// 1. Factorial
+function factorial(number = 1, fact = 1) {
+	if (number === 1) return fact;
+
+	return factorial(number - 1, fact * number);
+}
+
+function factorialV2(number = 2) {
+	if (number === 2) return 2;
+
+	return number * factorialV2(number - 1);
+}
+
+console.log(factorial(5));
+console.log(factorialV2(5));
+
+// 2. Fibonacci
+function fibonacci(n = 0) {
+	if (n < 2) return n;
+
+	return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log(fibonacci(9));
+
+// 3. Reverse String
+function reverseString(str = '') {
+	if (!str) return str;
+
+	return str.slice(str.length - 1) + reverseString(str.slice(0, str.length - 1));
+}
+
+console.log(reverseString('aaab'));
