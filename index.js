@@ -586,8 +586,8 @@ function factorialV2(number = 2) {
 	return number * factorialV2(number - 1);
 }
 
-console.log(factorial(5));
-console.log(factorialV2(5));
+// console.log(factorial(5));
+// console.log(factorialV2(5));
 
 // 2. Fibonacci
 function fibonacci(n = 0) {
@@ -596,7 +596,7 @@ function fibonacci(n = 0) {
 	return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
-console.log(fibonacci(9));
+// console.log(fibonacci(9));
 
 // 3. Reverse String
 function reverseString(str = '') {
@@ -605,4 +605,67 @@ function reverseString(str = '') {
 	return str.slice(str.length - 1) + reverseString(str.slice(0, str.length - 1));
 }
 
-console.log(reverseString('aaab'));
+// console.log(reverseString('aaab'));
+
+/**
+ * Sorting
+ */
+
+const arrToSort = [99, 44, 6, 2, 1, 1, 5, 63, 87, 283, 4, 0];
+
+// 1. Bubble Sort
+function bubbleSort(arr) {
+	for (let i = 0; i < arr.length; i++) {
+		for (let j = 0; j < arr.length; j++) {
+			if (arr[j] > arr[j + 1]) {
+				const temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+
+	return arr;
+}
+
+console.log(bubbleSort(arrToSort));
+
+// 2. Selection Sort
+function selectionSort(arr) {
+	for (let i = 0; i < arr.length; i++) {
+		let minIndex = i;
+		let min = arr[i];
+
+		for (let j = i + 1; j < arr.length; j++) {
+			if (arr[j] > min) continue;
+
+			minIndex = j;
+			min = arr[j];
+		}
+
+		arr[minIndex] = arr[i];
+		arr[i] = min;
+	}
+
+	return arr;
+}
+
+console.log(selectionSort(arrToSort));
+
+// 3. Insertion Sort
+function insertionSort(arr) {
+	for (let i = 1; i < arr.length; i++) {
+		let current = arr[i];
+		let j;
+
+		for (j = i - 1; j >= 0 && arr[j] > current; j--) {
+			arr[j + 1] = arr[j];
+		}
+
+		arr[j + 1] = current;
+	}
+
+	return arr;
+}
+
+console.log(insertionSort(arrToSort));
