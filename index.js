@@ -5,12 +5,9 @@
  */
 // 1. Merge two sorted arrays
 const mergeSortedArray = (arr1, arr2) => {
-	if (!arr1 || !arr1.length) return arr2;
-	if (!arr2 || !arr2.length) return arr1;
-
 	const sortedArr = [];
 
-	while (arr1.length || arr2.length) {
+	while (arr1.length && arr2.length) {
 		if (arr1[0] < arr2[0]) {
 			sortedArr.push(arr1.shift());
 		} else {
@@ -18,7 +15,7 @@ const mergeSortedArray = (arr1, arr2) => {
 		}
 	}
 
-	console.log(sortedArr);
+	return [...sortedArr, ...arr1, ...arr2];
 };
 
 // mergeSortedArray([1, 3, 7], [3, 20, 51]);
@@ -628,7 +625,7 @@ function bubbleSort(arr) {
 	return arr;
 }
 
-console.log(bubbleSort(arrToSort));
+// console.log(bubbleSort(arrToSort));
 
 // 2. Selection Sort
 function selectionSort(arr) {
@@ -650,7 +647,7 @@ function selectionSort(arr) {
 	return arr;
 }
 
-console.log(selectionSort(arrToSort));
+// console.log(selectionSort(arrToSort));
 
 // 3. Insertion Sort
 function insertionSort(arr) {
@@ -668,4 +665,16 @@ function insertionSort(arr) {
 	return arr;
 }
 
-console.log(insertionSort(arrToSort));
+// console.log(insertionSort(arrToSort));
+
+// 4. Merge Sort
+function mergeSort(arr) {
+	if (arr.length === 1) return arr;
+
+	const left = arr.slice(0, Math.floor(arr.length / 2));
+	const right = arr.slice(Math.floor(arr.length / 2));
+
+	return mergeSortedArray(mergeSort(left), mergeSort(right));
+}
+
+console.log(mergeSort(arrToSort));
